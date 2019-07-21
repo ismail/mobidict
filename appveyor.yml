@@ -66,7 +66,7 @@ build_script:
 
     cd build
 
-    set PATH=C:\Qt\5.12\msvc2017_64\bin;%PATH%
+    set PATH=C:\Qt\5.12\msvc2019_64\bin;%PATH%
 
     cmake -G Ninja -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=RelWithDebInfo -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=C:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake ..
 
