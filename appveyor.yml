@@ -40,7 +40,7 @@ install:
 
     vcpkg install zlib:x64-windows-static
 
-    appveyor DownloadFile http://prereleases.llvm.org/win-snapshots/LLVM-9.0.0-r363781-win64.exe -FileName llvm-installer.exe
+    appveyor DownloadFile http://prereleases.llvm.org/win-snapshots/LLVM-10.0.0-r372920-win64.exe -FileName llvm-installer.exe
 
     START /WAIT llvm-installer.exe /S /D=C:\"Program Files\LLVM"
 
@@ -66,7 +66,7 @@ build_script:
 
     cd build
 
-    set PATH=C:\Qt\5.12\msvc2019_64\bin;%PATH%
+    set PATH=C:\Qt\5.13\msvc2019_64\bin;%PATH%
 
     cmake -G Ninja -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=RelWithDebInfo -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=C:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake ..
 
