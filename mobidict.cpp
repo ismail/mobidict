@@ -9,11 +9,11 @@ MobiDict::MobiDict(const QString &path, const QString &serial) : QObject()
   m_codec        = nullptr;
   m_deviceSerial = serial;
   m_isCP1252     = false;
-  m_language     = QString::null;
+  m_language     = QString();
   m_mobiData     = nullptr;
   m_rawMarkup    = nullptr;
   m_path         = path;
-  m_title        = QString::null;
+  m_title        = QString();
 }
 
 MobiDict::~MobiDict()
@@ -28,7 +28,7 @@ MobiDict::~MobiDict()
 QString MobiDict::resolveLink(const QString &link)
 {
   const uint32_t offset = link.toUInt();
-  QString match         = QString::null;
+  QString match         = QString();
 
   for (const auto &entry : m_wordHash.keys()) {
     for (const auto &mobiEntry : m_wordHash[entry]) {
@@ -45,7 +45,7 @@ QString MobiDict::resolveLink(const QString &link)
 QString MobiDict::lookupWord(const QString &word)
 {
   if (m_wordHash.constFind(word) == m_wordHash.constEnd())
-    return QString::null;
+    return QString();
 
   // Force rich-text detection
   QString result = "<qt>";

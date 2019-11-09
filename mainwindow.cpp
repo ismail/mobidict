@@ -25,9 +25,9 @@ MainWindow::MainWindow() : QWidget(), m_ui(new Ui::MainWindow())
   m_ui->splitter->setStretchFactor(1, 8);
 
   m_currentDict     = nullptr;
-  m_currentDictName = QString::null;
-  m_deviceSerial    = QString::null;
-  m_html            = QString::null;
+  m_currentDictName = QString();
+  m_deviceSerial    = QString();
+  m_html            = QString();
 
   m_model = new QStringListModel;
   m_ui->matchesView->setModel(m_model);
@@ -207,14 +207,14 @@ void MainWindow::dictionaryLoaded()
     setWindowTitle("Mobidict");
     delete m_currentDict;
     m_currentDict     = nullptr;
-    m_currentDictName = QString::null;
+    m_currentDictName = QString();
   }
   else {
     setWindowTitle(m_currentDict->title());
     m_ui->searchLine->setEnabled(true);
 
     // Populate the list widget
-    loadMatches(QString::null);
+    loadMatches(QString());
 
     // and select the first item
     m_ui->matchesView->setCurrentIndex(m_ui->matchesView->model()->index(0, 0));
