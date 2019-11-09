@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QScreen>
 #include <QShortcut>
 #include <QWidget>
 
@@ -174,7 +175,7 @@ void MainWindow::showEvent(QShowEvent* ev)
       setGeometry(rect);
     else {
       setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(),
-                                      qApp->desktop()->availableGeometry()));
+                                      qApp->screens()[0]->availableGeometry()));
     }
 
     if (!splitterSizes.isEmpty())
