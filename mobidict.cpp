@@ -1,8 +1,8 @@
+#include "mobidict.h"
+
 #include <QCollator>
 #include <QDebug>
 #include <QElapsedTimer>
-
-#include "mobidict.h"
 
 MobiDict::MobiDict(const QString &path, const QString &serial) : QObject()
 {
@@ -192,6 +192,8 @@ MOBI_RET MobiDict::open()
     // qDebug("Adding %s", orth_entry->label);
   }
 
+  sortKeys();
+
   if (m_wordHash.isEmpty()) {
     qWarning() << "Failed to find any word.";
     return MOBI_DATA_CORRUPT;
@@ -213,18 +215,22 @@ const QString &MobiDict::title()
 
 const QList<QString> MobiDict::words()
 {
-  QList<QString> keys = m_wordHash.keys();
+  return m_sortedKeys;
+}
+
+void MobiDict::sortKeys()
+{
+  m_sortedKeys = m_wordHash.keys();
   QCollator sorter;
 
   sorter.setLocale(QLocale(m_language));
   sorter.setIgnorePunctuation(true);
   sorter.setNumericMode(true);
   sorter.setCaseSensitivity(Qt::CaseInsensitive);
-  std::sort(keys.begin(), keys.end(), [&](const QString &a, const QString &b) {
-    return sorter.compare(a, b) < 0;
-  });
-
-  return keys;
+  std::sort(m_sortedKeys.begin(), m_sortedKeys.end(),
+            [&](const QString &a, const QString &b) {
+              return sorter.compare(a, b) < 0;
+            });
 }
 
 MOBIPart *MobiDict::getResourceByUid(const size_t &uid)

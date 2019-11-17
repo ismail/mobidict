@@ -1,6 +1,6 @@
-#include <QDebug>
-
 #include "htmlbrowser.h"
+
+#include <QDebug>
 
 HtmlBrowser::HtmlBrowser(QWidget* parent) : QTextBrowser(parent) {}
 

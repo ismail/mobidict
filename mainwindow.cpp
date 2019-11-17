@@ -1,4 +1,5 @@
 #include <QtConcurrent/qtconcurrentrun.h>
+
 #include <QApplication>
 #include <QClipboard>
 #include <QDesktopWidget>

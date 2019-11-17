@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm -rf build; mkdir -p build; cd build
+mkdir -p build; cd build
 
 cmake -G Ninja \
     -DCMAKE_C_COMPILER=clang \

@@ -28,6 +28,9 @@ class MobiDict : public QObject {
   QString lookupWord(const QString&);
 
  private:
+
+  void sortKeys();
+
   MOBIData* m_mobiData;
   MOBIRawml* m_rawMarkup;
 
@@ -39,6 +42,7 @@ class MobiDict : public QObject {
   bool m_isCP1252;
 
   QHash<QString, QList<MobiEntry*>> m_wordHash;
+  QList<QString> m_sortedKeys;
   QTextCodec* m_codec;
 };
 

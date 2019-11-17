@@ -1,6 +1,6 @@
-#include <QSettings>
-
 #include "settings.h"
+
+#include <QSettings>
 
 Settings::Settings(QWidget* parent, QSettings* settings)
     : QDialog(parent), m_ui(new Ui::Settings)
