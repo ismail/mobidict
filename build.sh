@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p build; cd build
+rm -rf build; mkdir -p build; cd build
 
 cmake -G Ninja \
     -DCMAKE_C_COMPILER=clang \
@@ -8,7 +8,6 @@ cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DASAN=OFF \
     -DAUTOTEST=OFF \
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     ..
 

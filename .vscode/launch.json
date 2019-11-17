@@ -2,15 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "cppvsdbg",
-            "request": "launch",
-            "name": "Run (VS)",
-            "cwd": "${workspaceRoot}/build",
-            "program": "${workspaceRoot}/build/mobidict.exe",
-            "environment": [{"name": "PATH", "value": "C:/Qt/Qt5.9.2/5.9.2/msvc2017_64/bin"}],
-            "visualizerFile": "${workspaceRoot}/.vscode/qt5.natvis"
-        },
-        {
             "type": "cppdbg",
             "request": "launch",
             "name": "Run (GDB)",

@@ -1,25 +1,11 @@
 {
     "configurations": [
         {
-            "name": "Win32",
-            "intelliSenseMode": "msvc-x64",
-            "includePath": [
-                "${workspaceRoot}"
-            ],
-            "compileCommands": "${workspaceRoot}/build/compile_commands.json",
-            "browse": {
-                "path": [
-                    "${workspaceRoot}"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            }
-        },
-        {
             "name": "Linux",
             "intelliSenseMode": "clang-x64",
             "includePath": [
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "/usr/include/qt5"
             ],
             "compileCommands": "${workspaceRoot}/build/compile_commands.json",
             "browse": {
@@ -28,8 +14,10 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         }
     ],
-    "version": 3
+    "version": 4
 }
