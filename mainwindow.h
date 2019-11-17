@@ -53,8 +53,7 @@ class MainWindow : public QWidget {
   QFutureWatcher<MOBI_RET> m_watcher;
   QFuture<MOBI_RET> m_future;
 
-  Settings* m_settingsDialog;
-  QSettings* m_settings;
+  Settings* m_settings;
 
   void createResources(const QString&);
 

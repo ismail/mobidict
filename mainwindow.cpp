@@ -43,14 +43,6 @@ MainWindow::MainWindow() : QWidget(), m_ui(new Ui::MainWindow())
   installEventFilter(this);
 #endif
 
-// On windows force ini format
-#ifdef Q_OS_WIN
-  m_settings = new QSettings(QSettings::IniFormat, QSettings::UserScope,
-                             qApp->organizationName(), qApp->applicationName());
-#else
-  m_settings  = new QSettings;
-#endif
-
 #if defined(Q_OS_WIN)
   m_emojiFont = "Segoe UI Emoji";
 #elif defined(Q_OS_LINUX)
@@ -59,7 +51,7 @@ MainWindow::MainWindow() : QWidget(), m_ui(new Ui::MainWindow())
   m_emojiFont = "Apple Color Emoji";
 #endif
 
-  m_settingsDialog = new Settings(this, m_settings);
+  m_settings = new Settings(this);
   m_ui->searchLine->installEventFilter(this);
 
   connect(m_ui->searchLine, &QLineEdit::returnPressed, this,
@@ -110,9 +102,6 @@ MainWindow::~MainWindow()
 
   delete m_settings;
   m_settings = nullptr;
-
-  delete m_settingsDialog;
-  m_settingsDialog = nullptr;
 }
 
 bool MainWindow::eventFilter(QObject* obj, QEvent* event)
@@ -137,10 +126,9 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event)
 
 void MainWindow::closeEvent(QCloseEvent* ev)
 {
-  m_settings->setValue("mainwindow/geometry", geometry());
-  m_settings->setValue("mainwindow/splitterSizes", m_ui->splitter->saveState());
-  m_settings->setValue("viewer/lastDictionary",
-                       m_ui->dictComboBox->currentText());
+  m_settings->saveGeometry(geometry());
+  m_settings->saveSplitterSizes(m_ui->splitter->saveState());
+  m_settings->saveLastDictionary(m_ui->dictComboBox->currentText());
 
   QWidget::closeEvent(ev);
 }
