@@ -158,6 +158,10 @@ void MainWindow::showEvent(QShowEvent* ev)
 
     m_fontName = m_settings->value("viewer/fontName", "Consolas").toString();
     m_fontSize = m_settings->value("viewer/fontSize", 18).toInt();
+    m_dictPath = m_settings
+                     ->value("viewer/dictPath",
+                             QString("%1/Dictionaries").arg(QDir::homePath()))
+                     .toString();
 
     QString deviceSerial =
         m_settings->value("viewer/deviceSerial", QString()).toString();
@@ -263,6 +267,9 @@ void MainWindow::discoverDictionaries()
 
 void MainWindow::loadDictionary(const QString& text)
 {
+  if (text.isEmpty())
+    return;
+
   if (m_currentDictName == text)
     return;
 
@@ -407,6 +414,16 @@ void MainWindow::showSettingsDialog()
 
     // Reload the entry
     m_ui->resultBrowser->setHtml(m_html);
+  }
+
+  QString dictPath =
+      m_settings
+          ->value("viewer/dictPath",
+                  QString("%1/Dictionaries").arg(QDir::homePath()))
+          .toString();
+  if (dictPath != m_dictPath) {
+    discoverDictionaries();
+    loadDictionary(m_ui->dictComboBox->currentText());
   }
 }
 

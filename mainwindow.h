@@ -46,6 +46,7 @@ class MainWindow : public QWidget {
   QString m_emojiFont;
   QString m_html;
   QString m_fontName;
+  QString m_dictPath;
   int m_fontSize;
   QStringListModel* m_model;
 
