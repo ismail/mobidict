@@ -313,13 +313,8 @@ void MainWindow::searchItem(const QModelIndex& index)
 
 void MainWindow::loadMatches(const QString& word)
 {
-  QRegularExpression regex(word, QRegularExpression::CaseInsensitiveOption);
-  QList<QString> matches;
-
-  if (regex.isValid())
-    matches = m_currentDict->words().filter(regex);
-
-  m_model->setStringList(matches);
+  m_model->setStringList(
+      m_currentDict->words().filter(word, Qt::CaseInsensitive));
 }
 
 void MainWindow::createResources(const QString& html)

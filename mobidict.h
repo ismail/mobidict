@@ -1,12 +1,12 @@
 #ifndef MOBIDICT_H
 #define MOBIDICT_H
 
+#include <mobi.h>
+
 #include <QHash>
 #include <QObject>
 #include <QString>
 #include <QTextCodec>
-
-#include <mobi.h>
 
 typedef struct {
   uint32_t startPos;
@@ -28,7 +28,6 @@ class MobiDict : public QObject {
   QString lookupWord(const QString&);
 
  private:
-
   void sortKeys();
 
   MOBIData* m_mobiData;
