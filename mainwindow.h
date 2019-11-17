@@ -18,7 +18,7 @@ class MainWindow : public QWidget {
   MainWindow();
   ~MainWindow();
 
-  bool discoverDictionaries();
+  void discoverDictionaries();
   void loadMatches(const QString&);
   void searchItem(const QModelIndex&);
   void searchWord();

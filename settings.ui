@@ -6,35 +6,67 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>391</width>
-    <height>160</height>
+    <width>392</width>
+    <height>238</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>391</width>
-    <height>150</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>391</width>
-    <height>160</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="0">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Font</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFontComboBox" name="fontComboBox">
+       <property name="minimumSize">
+        <size>
+         <width>220</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>220</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Font size</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="pointComboBox">
+       <property name="minimumSize">
+        <size>
+         <width>220</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>220</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -63,59 +95,61 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Font point size</string>
+        <string>Dictionary folder</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="pointComboBox">
+      <widget class="QLineEdit" name="dictDirectoryLabel">
        <property name="minimumSize">
         <size>
-         <width>220</width>
+         <width>185</width>
          <height>30</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>220</width>
+         <width>185</width>
          <height>30</height>
         </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="dictDirectoryButton">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>...</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Browser Font</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFontComboBox" name="fontComboBox">
-       <property name="minimumSize">
-        <size>
-         <width>220</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>220</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="4" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -128,12 +162,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>259</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
-     <y>274</y>
+     <y>237</y>
     </hint>
    </hints>
   </connection>
@@ -144,12 +178,12 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>327</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
-     <y>274</y>
+     <y>237</y>
     </hint>
    </hints>
   </connection>

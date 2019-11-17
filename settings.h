@@ -17,6 +17,7 @@ class Settings : public QDialog {
 
  private slots:
   void saveSettings();
+  void selectDictDirectory();
 
  protected:
   void showEvent(QShowEvent*) override;

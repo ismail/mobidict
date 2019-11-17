@@ -229,9 +229,12 @@ void MainWindow::dictionaryLoaded()
   m_ui->dictComboBox->setEnabled(true);
 }
 
-bool MainWindow::discoverDictionaries()
+void MainWindow::discoverDictionaries()
 {
-  QDir dir(QString("%1/Dictionaries").arg(QDir::homePath()));
+  QDir dir(m_settings
+               ->value("viewer/dictPath",
+                       QString("%1/Dictionaries").arg(QDir::homePath()))
+               .toString());
   QStringList formats;
   formats << "*.azw"
           << "*.mobi";
@@ -242,16 +245,20 @@ bool MainWindow::discoverDictionaries()
   if (dictionaries.isEmpty()) {
     QMessageBox::critical(
         nullptr, "No dictionary found",
-        QString("Please put your dictionaries (in azw/mobi format) under "
-                "<b>%1/Dictionaries</b> and restart the program.")
-            .arg(QDir::homePath()));
-    return false;
+        QString("No dictionary file (in azw/mobi format) found under "
+                "<b>%1</b>, you might want to change the dictionary folder "
+                "under the settings.")
+            .arg(m_settings
+                     ->value("viewer/dictPath",
+                             QString("%1/Dictionaries").arg(QDir::homePath()))
+                     .toString()));
+    return;
   }
 
   for (auto dict : dictionaries)
     m_ui->dictComboBox->addItem(dict);
 
-  return true;
+  return;
 }
 
 void MainWindow::loadDictionary(const QString& text)
@@ -263,9 +270,12 @@ void MainWindow::loadDictionary(const QString& text)
     delete m_currentDict;
 
   m_currentDictName = text;
-  m_currentDict     = new MobiDict(
-      QString("%1/Dictionaries/%2").arg(QDir::homePath()).arg(text),
-      m_deviceSerial);
+  m_currentDict =
+      new MobiDict(m_settings
+                       ->value("viewer/dictPath",
+                               QString("%1/Dictionaries").arg(QDir::homePath()))
+                       .toString(),
+                   m_deviceSerial);
   m_future = QtConcurrent::run(m_currentDict, &MobiDict::open);
   m_watcher.setFuture(m_future);
 

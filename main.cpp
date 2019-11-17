@@ -11,9 +11,8 @@ int main(int argc, char **argv)
   QApplication app(argc, argv);
   MainWindow m;
 
-  if (!m.discoverDictionaries())
-    return -1;
-
+  m.discoverDictionaries();
   m.show();
+
   return app.exec();
 }
