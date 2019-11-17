@@ -213,7 +213,7 @@ const QString &MobiDict::title()
   return m_title;
 }
 
-const QList<QString> MobiDict::words()
+const QList<QString> &MobiDict::words()
 {
   return m_sortedKeys;
 }

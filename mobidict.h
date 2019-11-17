@@ -23,7 +23,7 @@ class MobiDict : public QObject {
 
   MOBIPart* getResourceByUid(const size_t& uid);
 
-  const QList<QString> words();
+  const QList<QString>& words();
   QString resolveLink(const QString&);
   QString lookupWord(const QString&);
 
