@@ -9,8 +9,8 @@ artifacts:
 build:
      verbosity: detailed
 
-cache:
-    c:\tools\ -> appveyor.yml
+#cache:
+#    c:\tools\ -> appveyor.yml
 
 init:
 - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
